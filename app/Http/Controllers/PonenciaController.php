@@ -44,8 +44,8 @@ class PonenciaController extends AppBaseController
      */
     public function create()
     {
-        $ponentes = Ponente::pluck('nombre','id');
-        return view('ponencias.create',compact('ponentes'));
+        $ponentes = Ponente::pluck('nombre', 'id');
+        return view('ponencias.create', compact('ponentes'));
     }
 
     /**
@@ -96,6 +96,7 @@ class PonenciaController extends AppBaseController
     public function edit($id)
     {
         $ponencia = $this->ponenciaRepository->findWithoutFail($id);
+        $ponentes = Ponente::pluck('nombre', 'id');
 
         if (empty($ponencia)) {
             Flash::error('Ponencia not found');
@@ -103,7 +104,7 @@ class PonenciaController extends AppBaseController
             return redirect(route('ponencias.index'));
         }
 
-        return view('ponencias.edit')->with('ponencia', $ponencia);
+        return view('ponencias.edit', compact('ponencia', 'ponentes'));
     }
 
     /**
