@@ -15,7 +15,7 @@ class Ponente extends Model
     use SoftDeletes;
 
     public $table = 'ponentes';
-    
+
 
     protected $dates = ['deleted_at'];
 
@@ -43,11 +43,10 @@ class Ponente extends Model
      * @var array
      */
     public static $rules = [
-        
+
     ];
     public function ponencias(){
         return $this->hasMany('App\Models\Ponencia');
     }
 
-    
 }

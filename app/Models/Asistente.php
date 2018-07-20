@@ -15,7 +15,7 @@ class Asistente extends Model
     use SoftDeletes;
 
     public $table = 'asistentes';
-    
+
 
     protected $dates = ['deleted_at'];
 
@@ -42,12 +42,11 @@ class Asistente extends Model
      *
      * @var array
      */
-    public static $rules = [
-        
-    ];
+    public static $rules = [];
+
     public function ponencia()
     {
-        return $this->hasOne('App\Models\Ponencia','id');
+        return $this->belongsTo('App\Models\Ponencia');
     }
-    
+
 }
