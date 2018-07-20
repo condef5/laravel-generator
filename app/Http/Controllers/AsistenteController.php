@@ -44,8 +44,8 @@ class AsistenteController extends AppBaseController
      */
     public function create()
     {
-        $ponencias = Ponencia::pluck('nombre','id');
-        return view('asistentes.create',compact('ponencias'));
+        $ponencias = Ponencia::pluck('nombre', 'id');
+        return view('asistentes.create', compact('ponencias'));
     }
 
     /**
@@ -96,6 +96,7 @@ class AsistenteController extends AppBaseController
     public function edit($id)
     {
         $asistente = $this->asistenteRepository->findWithoutFail($id);
+        $ponencias = Ponencia::pluck('nombre', 'id');
 
         if (empty($asistente)) {
             Flash::error('Asistente not found');
@@ -103,7 +104,7 @@ class AsistenteController extends AppBaseController
             return redirect(route('asistentes.index'));
         }
 
-        return view('asistentes.edit')->with('asistente', $asistente);
+        return view('asistentes.edit', compact('asistente', 'ponencias'));
     }
 
     /**
